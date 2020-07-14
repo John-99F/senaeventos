@@ -2,7 +2,7 @@
 <?php
     require_once'../model/ins.php';
     require_once'../model/ambiente.php';
-
+    require_once'../model/eventosF.php';
     /*PROVISIONAL*/
 
 /*SECCION DE DIRECCIONAMIENTO DE INSTRUCTOR
@@ -58,9 +58,33 @@ if (isset($_POST['ambiente']))
             break;
     }
 }
+/* SECCION DE DIRECCIONAMIENTO FICHA 
+-----------------------------------------------------------------------*/
+
+if(isset($_POST['eventos']))
+{
+
+    switch ($_POST['eventos']) 
+    {
+        case 'AgregarHorario':
+                $eve1= new Eventos(Eventos::arrayeventos());
+                $eve1->AgregarHorario();
+            break;
+
+        case 'ActualizarEventos' 
+                $eve2= new Eventos(Eventos::arrayeventos());
+                $eve2->ActualizarEventos($_POST['idAntes']);
+            break;
+        
+        case 'EliminaEventos'
+                
+
+
+        default:
+            # code...
+            break;
+    }
+}
 
 
 ?>
-<script>
-    alert("Ambiente eliminado correctamente");
-</script>

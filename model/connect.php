@@ -1,6 +1,7 @@
 <?php
 
-$connect = new mysqli('localhost','root','123456789','proyectoD');
+
+$connect = new mysqli('localhost:3306','root','123456789','proyectoD');
 
 
 ?>
