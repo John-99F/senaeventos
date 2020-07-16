@@ -1,10 +1,10 @@
 <?php
-include("Funciones.php");
+require_once"../../../model/connect.php";
 $programa=$_POST['programa1'];
 
 
-    $Conectar=Conectar();
-    $row=mysqli_query($Conectar,"SELECT*FROM ficha WHERE idPrograma='$programa'")or die ("Error : ".mysqli_error($Conectar));
+
+    $row=mysqli_query($connect,"SELECT*FROM ficha WHERE idPrograma='$programa'")or die ("Error : ".mysqli_error($connect));
     $lista="Ficha <select id='lFicha' name='lFicha'>";
 
     while($peticion=mysqli_fetch_array($row)){

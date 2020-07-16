@@ -1,9 +1,8 @@
 <?php
-include("Funciones.php");
-$Conectar=Conectar();
+require_once"../../../model/connect.php";
 $centro=$_POST['centro'];
 
-$row=mysqli_query($Conectar,"SELECT*FROM ambiente WHERE idCentro='$centro'")or die("Error :".mysqli_error($Conectar));
+$row=mysqli_query($connect,"SELECT*FROM ambiente WHERE idCentro='$centro'")or die("Error :".mysqli_error($connect));
 
 $lista="Ambiente <select id='lAmbiente' name='lAmbiente'>";
 

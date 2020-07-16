@@ -1,10 +1,9 @@
 <?php
-include ("Funciones.php");
-$Conexion=Conectar();
-$peticionCentro=mysqli_query($Conexion,"SELECT*FROM Centro")or die("Error : ".mysqli_error($Conexion));
+    require_once"../../../model/EventosF.php";
+    require_once"../../../model/connect.php";
+    $peticionCentro=mysqli_query($connect,"SELECT*FROM centro");
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +19,11 @@ $peticionCentro=mysqli_query($Conexion,"SELECT*FROM Centro")or die("Error : ".my
 </head>
 <body>
 
-<header><h1>GENERAL HORARIO</h1></header><BR><BR>
+<header><h1>GESTOR DE EVENTOS DE FORMACION</h1></header><BR><BR>
     <div class="Panel-General">
-    <form action="" method="POST">
-
+    <form action="../../../controller/controlIns.php" method="POST">
+      <fieldset>
+        <legend>Generar Evento</legend>
            Centro
            
            <select  id="ListaCentro"> 
@@ -31,16 +31,15 @@ $peticionCentro=mysqli_query($Conexion,"SELECT*FROM Centro")or die("Error : ".my
                         <?php
                              while($row=mysqli_fetch_array($peticionCentro)){
 
-
                                 ?>
                         <option value="<?php  echo $row['idCentro'];?>"><?php echo $row['nombreCentro']; ?></option>    
                              <?php   
                              }   
                          ?>
                     </select>
-                                <br>
-            <div id="lAmbiente"></div>  <br>
-            <div id="lPrograma"></div> <br>
+                                
+            <div id="lAmbiente"></div>  
+            <div id="lPrograma"></div> 
             <div id="lFicha"></div>
             
                                 
@@ -101,20 +100,13 @@ $peticionCentro=mysqli_query($Conexion,"SELECT*FROM Centro")or die("Error : ".my
                 Trimestre <input type="text" name="cTrimestre" >
                 <br> hora <input type="text" name="hora">
     
-                          <br>  <input type="submit" value="Agregar">
+                          <br>  <input type="submit" value="AgregarHorario">
 
-
-
+                          </fieldset>
     </form>
-
-
     </div>
 
-    <div>
-    <?php
-    $tabla=ConsultaTabla();
-    ?> 
-    </div>
+    
    
 </body>
 </html>

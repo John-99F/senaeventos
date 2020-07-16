@@ -77,14 +77,42 @@ if(isset($_POST['eventos']))
             break;
         
         case 'EliminaEventos'
-                
-
+                Eventos::eliminar($_POST['id']);
+            break;
 
         default:
-            # code...
+                echo "Error : no Direcciono";
             break;
     }
 }
+
+/* DIRECCIONAMIENTO FICHA 
+---------------------------------------------------------------------*/
+if(isset($_POST['ficha']))
+{
+
+    switch ($_POST['ficha']) 
+    {
+        case 'Agregar':
+                $fic1= new Ficha(Ficha::arrayficha());
+                $fic1->AgregarFicha();
+            break;
+
+        case 'Actualizar' 
+                $fic2= new Ficha(Ficha::arrayficha());
+                $fic2->ActualizarFicha($_POST['idAntes']);
+            break;
+        
+        case 'Eliminar'
+                Ficha::eliminar($_POST['id']);
+            break;
+
+        default:
+                echo "Error : no Direcciono";
+            break;
+    }
+}
+
 
 
 ?>
